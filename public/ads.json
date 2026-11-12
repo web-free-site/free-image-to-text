@@ -1,12 +1,58 @@
 {
-  "headerBanner728x90": "",
-  "homepageTop728x90": "",
-  "betweenToolAndContent728x90": "",
-  "desktopSidebar160x600": "",
-  "mobileSticky320x50": "",
-  "nativeBelowResult": "",
-  "socialBar": "",
-  "popunder": "",
-  "banner468x60": "",
-  "rectangle300x250": ""
+  "enabled": true,
+  "bannerScriptBase": "https://bauval.org/22",
+  "popunder": "https://abscloud.org/1/606e0592a5d0c1d4c040ceb5ca64f973",
+  "socialBar": "https://bauval.org/14/6a1d4d9d7fb779dca289ba46f06c2051",
+  "nativeBanner": {
+    "src": "https://bauval.org/21/2d16e0a6b34a88723489cc5ad921a92f",
+    "containerId": "container-2d16e0a6b34a88723489cc5ad921a92f"
+  },
+  "smartlink": {
+    "url": "https://araplhn.org/4/7c92b4cacfd5aefe41721f826cf5f779",
+    "label": "Sponsored"
+  },
+  "banners": {
+    "banner728x90": {
+      "key": "d316e56d032e62447ba7b2f9cd1d1610",
+      "width": 728,
+      "height": 90
+    },
+    "banner468x60": {
+      "key": "ea5f36b7d7cccb00f442b5e70ceca04e",
+      "width": 468,
+      "height": 60
+    },
+    "banner300x250": {
+      "key": "8302c54184cc346778be7f0db5161a67",
+      "width": 300,
+      "height": 250
+    },
+    "banner160x600": {
+      "key": "f21805a28737ab10fc59ff3ea3876673",
+      "width": 160,
+      "height": 600
+    },
+    "banner160x300": {
+      "key": "bb91975d4f8cf66c7d78285a1257d080",
+      "width": 160,
+      "height": 300
+    },
+    "banner320x50": {
+      "key": "eb31455f7e735a34d01347fb7d9fecf4",
+      "width": 320,
+      "height": 50
+    }
+  },
+  "slots": {
+    "headerBanner728x90": "banner728x90",
+    "homepageTop728x90": "banner728x90",
+    "betweenToolAndContent728x90": "banner728x90",
+    "desktopSidebar160x600": "banner160x600",
+    "banner160x300": "banner160x300",
+    "mobileSticky320x50": "banner320x50",
+    "nativeBelowResult": "nativeBanner",
+    "banner468x60": "banner468x60",
+    "rectangle300x250": "banner300x250",
+    "content300x250": "banner300x250"
+  }
 }

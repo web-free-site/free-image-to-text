@@ -38,20 +38,21 @@ Each includes unique title/meta, H1, ~300–600 words, FAQ, JSON-LD (WebApplicat
 
 ## Adsterra (`public/ads.json`)
 
-Empty string = slot renders nothing. Fields for the owner’s assistant:
+Banners load in isolated iframes from `https://bauval.org/22/<key>`. Popunder and Social Bar scripts are also in the prerendered HTML. Empty or `enabled: false` renders nothing.
 
-| JSON key | Placement |
+| Slot (`data-ad-slot`) | Unit |
 |----------|-----------|
-| `headerBanner728x90` | Header (all pages) |
-| `homepageTop728x90` | Reserved: top of homepage (same header slot on `/`) |
-| `betweenToolAndContent728x90` | Between OCR tool and article |
-| `desktopSidebar160x600` | Desktop sidebar |
-| `mobileSticky320x50` | Fixed bottom mobile banner |
-| `nativeBelowResult` | Below FAQ / near results |
-| `banner468x60` | Optional mid-page banner (sidebar stack) |
-| `rectangle300x250` | Sidebar rectangle |
-| `socialBar` | Site-wide script HTML |
-| `popunder` | Site-wide script HTML |
+| `headerBanner728x90` | 728x90 at the top of every page |
+| `homepageTop728x90` | 728x90 under the header on `/` only |
+| `betweenToolAndContent728x90` | 728x90 between the OCR tool and the article |
+| `banner468x60` | Mid-page 468x60 in the article |
+| `desktopSidebar160x600` | Desktop sidebar 160x600 |
+| `banner160x300` | Desktop sidebar 160x300 |
+| `rectangle300x250` / `content300x250` | 300x250 (sidebar or legal pages) |
+| `mobileSticky320x50` | Sticky 320x50 on mobile |
+| `nativeBelowResult` | Native banner below the FAQ |
+| `smartlink` | Footer sponsored link |
+| Popunder / Social Bar | In the HTML (`abscloud.org` / `bauval.org`) |
 
 **Do not** set COEP/COOP headers (they block ad iframes).
 

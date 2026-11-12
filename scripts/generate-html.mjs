@@ -5,6 +5,14 @@ import { pages, SITE_URL, faqFor, bodyCopy } from './pages-data.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
+const POPUNDER_SRC = 'https://abscloud.org/1/606e0592a5d0c1d4c040ceb5ca64f973';
+const SOCIAL_BAR_SRC = 'https://bauval.org/14/6a1d4d9d7fb779dca289ba46f06c2051';
+const SMARTLINK_URL = 'https://araplhn.org/4/7c92b4cacfd5aefe41721f826cf5f779';
+
+const adScripts = `
+    <script data-cfasync="false" data-ad="popunder" src="${POPUNDER_SRC}"></script>
+    <script data-cfasync="false" data-ad="social-bar" src="${SOCIAL_BAR_SRC}"></script>`;
+
 function canonicalFor(page) {
   return page.path ? `${SITE_URL}/${page.path}/` : `${SITE_URL}/`;
 }
@@ -126,12 +134,13 @@ function render(page) {
   <body>
     <a class="skip-link" href="#ocr-tool">Skip to OCR tool</a>
     <header class="site-header">
+      <div class="ad-slot ad-header" data-ad-slot="headerBanner728x90"></div>
       <div class="header-inner">
         <a class="logo" href="${lang === 'fr' ? '/fr/convertir-image-en-texte/' : '/'}">Free Image to Text</a>
         <nav class="site-nav" aria-label="Main">${navLinks}</nav>
         <div class="lang-switch">${langSwitch}</div>
       </div>
-      <div class="ad-slot ad-header" data-ad-slot="headerBanner728x90"></div>
+      ${page.path === '' ? '<div class="ad-slot ad-home-top" data-ad-slot="homepageTop728x90"></div>' : ''}
     </header>
     <main class="layout-main">
       <div class="tool-column">
@@ -141,6 +150,7 @@ function render(page) {
         <div class="ad-slot ad-between" data-ad-slot="betweenToolAndContent728x90"></div>
         <article class="seo-body">
           ${bodyCopy(page, lang)}
+          <div class="ad-slot ad-mid" data-ad-slot="banner468x60"></div>
           <h2>${lang === 'fr' ? 'Questions fréquentes' : 'Frequently asked questions'}</h2>
           <div class="faq-list">${faqHtml}</div>
         </article>
@@ -148,6 +158,7 @@ function render(page) {
       </div>
       <aside class="sidebar-ads" aria-label="Advertisement">
         <div class="ad-slot ad-sidebar" data-ad-slot="desktopSidebar160x600"></div>
+        <div class="ad-slot ad-sidebar-short" data-ad-slot="banner160x300"></div>
         <div class="ad-slot ad-rect" data-ad-slot="rectangle300x250"></div>
       </aside>
     </main>
@@ -155,9 +166,11 @@ function render(page) {
     <footer class="site-footer">
       <p>by <a href="https://gentil.quevvy.com" rel="author">Gentil M.</a> · <a href="mailto:gentil@quevvy.com">gentil@quevvy.com</a></p>
       <p class="footer-legal">${footerLegal}</p>
+      <p class="ad-smartlink" data-ad-slot="smartlink"><a href="${SMARTLINK_URL}" target="_blank" rel="sponsored noopener noreferrer">Sponsored</a></p>
     </footer>
     <script>window.__PAGE_META__ = ${pageMeta};</script>
     <script type="module" src="/src/main.tsx"></script>
+    ${adScripts}
   </body>
 </html>`;
 }
@@ -205,7 +218,7 @@ for (const p of legal) {
   mkdirSync(dirname(out), { recursive: true });
   writeFileSync(
     out,
-    `<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>${p.title}</title><link rel="canonical" href="${SITE_URL}/${p.file.replace('/index.html', '')}/"/></head><body class="legal-page"><header class="site-header"><p class="logo"><a href="/">Free Image to Text</a></p></header><main class="legal-main">${p.body}</main><footer class="site-footer"><p>by <a href="https://gentil.quevvy.com">Gentil M.</a></p></footer><script type="module" src="/src/legal.ts"></script></body></html>`
+    `<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>${p.title}</title><link rel="canonical" href="${SITE_URL}/${p.file.replace('/index.html', '')}/"/><link rel="alternate" hreflang="en" href="${SITE_URL}/${p.file.replace('/index.html', '')}/"/><link rel="alternate" hreflang="x-default" href="${SITE_URL}/${p.file.replace('/index.html', '')}/"/></head><body class="legal-page"><header class="site-header"><div class="ad-slot ad-header" data-ad-slot="headerBanner728x90"></div><p class="logo"><a href="/">Free Image to Text</a></p></header><main class="legal-main">${p.body}<div class="ad-slot ad-content" data-ad-slot="content300x250"></div></main><footer class="site-footer"><p>by <a href="https://gentil.quevvy.com">Gentil M.</a></p><p class="ad-smartlink" data-ad-slot="smartlink"><a href="${SMARTLINK_URL}" target="_blank" rel="sponsored noopener noreferrer">Sponsored</a></p></footer><div class="ad-slot ad-mobile-sticky" data-ad-slot="mobileSticky320x50"></div><script type="module" src="/src/legal.ts"></script>${adScripts}</body></html>`
   );
 }
 
