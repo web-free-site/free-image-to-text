@@ -1,0 +1,21 @@
+name = "free-image-to-text"
+account_id = "c26dbba499d049a1051c152c720cf4c5"
+compatibility_date = "2025-11-12"
+
+[build]
+command = "npm install && npm run build"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
+html_handling = "auto-trailing-slash"
+
+[[routes]]
+pattern = "free-image-to-text.web-free.site"
+custom_domain = true
+
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
