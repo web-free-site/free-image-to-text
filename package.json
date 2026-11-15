@@ -8,10 +8,11 @@
     "predev": "node scripts/generate-html.mjs",
     "dev": "vite",
     "prebuild": "node scripts/generate-html.mjs",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/inject-hub-and-analytics.mjs",
     "preview": "vite preview",
     "deploy": "npm run build && npx wrangler deploy",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postbuild": "node scripts/inject-hub-and-analytics.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
