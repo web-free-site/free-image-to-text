@@ -125,6 +125,10 @@ function render(page) {
     <meta property="og:description" content="${page.description}" />
     <meta property="og:site_name" content="Free Image to Text" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image" content="https://free-image-to-text.web-free.site/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content="https://free-image-to-text.web-free.site/og.png" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
